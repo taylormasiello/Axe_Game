@@ -14,6 +14,12 @@ int main()
     int circle_y{400};
     int cirlce_rad{125};
 
+    //axe coordinates 
+    int axe_x{350};
+    int axe_y{0};
+
+    int direction{10};
+
     SetTargetFPS(60); //sets target val for num times window will update per sec; from raylib
 
     while (!WindowShouldClose()) //WindowShouldClose() returns true if X window button clicked or ESC key presed; false otherwise
@@ -23,7 +29,7 @@ int main()
         //ClearsCanvas to prevent DoubleBuffer Flickering
         ClearBackground(PURPLE);
 
-        //Game Logic begins
+        //---Game Logic begins---
 
         //DrawCircle(int centerX, int centerY, int radius, COLOR); raylib window top left is (0,0)
         DrawCircle(circle_x, circle_y, cirlce_rad, GREEN); //drawn to center of window
@@ -33,23 +39,29 @@ int main()
         {
             circle_x+=50;
         }
-
         if (IsKeyDown(KEY_A) && circle_x > 0)
         {
             circle_x-=50;
         }
-
         if (IsKeyDown(KEY_W) && circle_y > 0) //y axis in raylib window inverted
         {
             circle_y-=50;
         }
-
         if (IsKeyDown(KEY_S) && circle_y < 800)
         {
             circle_y+=50;
         }
 
-        //Game Logic ends
+        //raylib; DrawRectangle(int posX, int posY, int width, int height, COLOR); posX & posY are upper left corner of drawn rectangle
+        DrawRectangle(axe_x, axe_y, 150, 100, RED); 
+        //move axe
+        axe_y+=direction;
+        if (axe_y > 700 || axe_y < 0) //subtracted height of rectangle from axe_y, so bounces at bottom of window correctly
+        {
+            direction = -direction;
+        }
+
+        //---Game Logic ends---
 
         //TearDown
         EndDrawing();
