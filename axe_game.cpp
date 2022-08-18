@@ -2,13 +2,13 @@
 
 int main() 
 {
-    int width{350};
-    int height{200};
+    int width{1400};
+    int height{800};
 
     //raylib, creates a popUp text window; InitWindow(int width, int height, title); (of window in pixels)
     InitWindow(width, height, "Taylor's Window");
 
-    while (true) 
+    while (!WindowShouldClose()) //WindowShouldClose() returns true if X window button clicked or ESC key presed; false otherwise
     {
         /*
         Double Buffering: Image constantly updated many times per second (really just a bunch of still images updating rapidly)
@@ -27,5 +27,6 @@ int main()
         ClearBackground(RED);
         //TearDown
         EndDrawing();
+        
     }
 }
