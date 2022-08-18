@@ -24,7 +24,9 @@ int main()
         //SetUp
         BeginDrawing();
         //ClearsCanvas to prevent DoubleBuffer Flickering
-        ClearBackground(RED);
+        ClearBackground(PURPLE);
+        //DrawCircle(int centerX, int centerY, int radius, COLOR); raylib window top left is (0,0)
+        DrawCircle(700, 400, 125, GREEN); //drawn to center of window
         //TearDown
         EndDrawing();
         
